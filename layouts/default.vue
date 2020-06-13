@@ -116,7 +116,10 @@ export default {
   },
   watch: {
     '$route.path': () => {
-      if (process.client) topbar.show()
+      if (process.client) {
+        if (topbar.showing()) topbar.hide()
+        topbar.show()
+      }
     }
   },
   data() {
