@@ -40,11 +40,8 @@
             perPage: 10
           }
         })
-        console.log(articles)
         this.articles = articles.data.news
         this.lastPage = articles.data.pageInfo.last
-        // console.log(this.articles)
-        // console.log(this.lastPage)
       }
     }
   }

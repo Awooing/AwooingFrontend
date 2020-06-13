@@ -2,14 +2,14 @@
   <div>
     <h2 class="page-sub">Random Awoo</h2>
     <p style="color: white;text-align: center;margin-bottom: 30px">Each time you reload the page or click on the image you'll get a new awoo!</p>
-        <div class="container">
-            <div class="awoo-wrapper" style="text-align-last: center;">
-                  <div v-if="imageSrc === null || imageLoaded === false">
-                    <h1 style="color: white;font-size: 2rem;text-align: center">Loading... <img src="https://cdn.discordapp.com/emojis/322522663304036352.png?v=1" alt="Awoo" class="awoo"></h1>
-                  </div>
-                <img id="awoos-image" style="cursor: pointer" v-if="imageSrc !== null" @click="this.loadImage" @load="this.setImageLoaded" :src="imageSrc" alt="We encountered an awooror. Please refresh.">
-            </div>
+    <div class="container">
+      <div class="awoo-wrapper" style="text-align-last: center;">
+        <div v-if="imageSrc === null || imageLoaded === false">
+          <h1 style="color: white;font-size: 2rem;text-align: center">Loading... <img src="https://cdn.discordapp.com/emojis/322522663304036352.png?v=1" alt="Awoo" class="awoo"></h1>
         </div>
+        <img id="awoos-image" style="cursor: pointer" v-if="imageSrc !== null" @click="this.loadImage" @load="this.setImageLoaded" :src="imageSrc" alt="We encountered an awooror. Please refresh.">
+      </div>
+    </div>
   </div>
 </template>
 

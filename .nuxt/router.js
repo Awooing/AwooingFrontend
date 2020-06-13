@@ -3,10 +3,10 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _09f88adf = () => interopDefault(import('..\\pages\\awoo.vue' /* webpackChunkName: "pages_awoo" */))
-const _6f75cf30 = () => interopDefault(import('..\\pages\\council.vue' /* webpackChunkName: "pages_council" */))
-const _b3d26ac8 = () => interopDefault(import('..\\pages\\news.vue' /* webpackChunkName: "pages_news" */))
-const _45626c4e = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _c57efb6e = () => interopDefault(import('../pages/awoo.vue' /* webpackChunkName: "pages/awoo" */))
+const _0c15f0be = () => interopDefault(import('../pages/council.vue' /* webpackChunkName: "pages/council" */))
+const _395ec206 = () => interopDefault(import('../pages/news.vue' /* webpackChunkName: "pages/news" */))
+const _99f480a2 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -26,19 +26,19 @@ export const routerOptions = {
 
   routes: [{
     path: "/awoo",
-    component: _09f88adf,
+    component: _c57efb6e,
     name: "awoo"
   }, {
     path: "/council",
-    component: _6f75cf30,
+    component: _0c15f0be,
     name: "council"
   }, {
     path: "/news",
-    component: _b3d26ac8,
+    component: _395ec206,
     name: "news"
   }, {
     path: "/",
-    component: _45626c4e,
+    component: _99f480a2,
     name: "index"
   }],
 
