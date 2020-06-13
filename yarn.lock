@@ -5246,7 +5246,7 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-buefy@^1.2.1:
+nuxt-buefy@^0.3.31:
   version "0.3.31"
   resolved "https://registry.yarnpkg.com/nuxt-buefy/-/nuxt-buefy-0.3.31.tgz#9cf9dc71c35077bc1531001e1e05d6da49269aa4"
   integrity sha512-nO2xd56fizUlNK86D9VRB9DdGq2ekYqDEhBACaQ9XwE16JwCPnV+nLObI/+RkiQNAQM4P12dIqAtbHHgfT6dVw==
