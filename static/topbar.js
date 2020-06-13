@@ -129,6 +129,9 @@
                     }
                     fadeTimerId = window.requestAnimationFrame(loop)
                 })()
+            },
+            showing: function() {
+                return showing
             }
         }
 

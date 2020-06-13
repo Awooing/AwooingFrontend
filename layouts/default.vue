@@ -114,6 +114,11 @@ export default {
       topbar.show()
     }
   },
+  watch: {
+    '$route.path': () => {
+      if (process.client) topbar.show()
+    }
+  },
   data() {
     return {
       isComponentLoginModalActive: false,

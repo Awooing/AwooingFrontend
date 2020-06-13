@@ -34,7 +34,7 @@
     methods: {
       async loadImage() {
         this.imageLoaded = false
-        if (process.client) topbar.show()
+        if (this.imageSrc !== null && process.client) topbar.show()
         const image = await this.$axios({
           method: 'GET',
           url: 'http://localhost:4000/awoo'
