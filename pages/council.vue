@@ -1,19 +1,21 @@
 <template>
  <div>
    <div v-if="members === null">
-     <h1 style="color: white;font-size: 2rem;text-align: center">Loading... <img src="https://cdn.discordapp.com/emojis/322522663304036352.png?v=1" alt="Awoo" class="awoo"></h1>
+     <h1 class="loading-text">Loading... <img src="https://cdn.discordapp.com/emojis/322522663304036352.png?v=1" alt="Awoo" class="awoo"></h1>
    </div>
    <div v-if="members !== null">
-    <div v-for="member in members" :key="member.id" class="council-block" style="align-items: flex-start;display: flex;text-align: left;margin: 1rem;background: rgba(0,0,0,0.3);padding: 1rem;border-radius: 10px;color: white;">
-      <img style="border-radius: 4rem;min-height: 128px" :src="member.discord.avatar" :alt="member.name">
-      <div style="margin-left: 1rem;color:white">
-        <h4 style="margin: 0;font-size: 1.5rem">{{member.name}} <span style="font-size: 0.8rem">{{member.position}}</span></h4>
-        <h3 style="font-size: .9rem;color: gray" v-html="member.about"></h3>
+    <div v-for="member in members" :key="member.id" class="council-block">
+      <img :src="member.discord.avatar" :alt="member.name">
+      <div>
+        <h4>{{member.name}} <span>{{member.position}}</span></h4>
+        <h3 v-html="member.about"></h3> 
+        <!-- parse awoo emotes -->
       </div>
     </div>
    </div>
  </div>
 </template>
+
 
 <script>
 
@@ -32,6 +34,7 @@ export default {
           url: 'http://localhost:4000/council'
     })
     this.members = members.data.members
+    if (process.client) topbar.hide()
   }
 }
 </script>

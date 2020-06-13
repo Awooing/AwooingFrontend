@@ -37,10 +37,10 @@
 
           <div id="main-nav" class="navbar-menu">
             <div class="navbar-start">
-              <a class="navbar-item" href="/">Home</a>
-              <a class="navbar-item" href="/news">News</a>
-              <a class="navbar-item" href="/council">Council</a>
-              <a class="navbar-item" href="/awoo">Random Awoos</a>
+              <nuxt-link to="/" class="navbar-item">Home</nuxt-link>
+              <nuxt-link to="/news" class="navbar-item">News</nuxt-link>
+              <nuxt-link to="/council" class="navbar-item">Council</nuxt-link>
+              <nuxt-link to="/awoo" class="navbar-item">Awoo Pics</nuxt-link>
             </div>
             <div class="navbar-end">
               <div class="navbar-item">
@@ -108,6 +108,12 @@ export default {
     LoginForm,
     RegisterForm
   },
+  mounted() {
+    if (process.client) {
+      topbar.config({barColors: {0:"#281483", .3:"#8f6ed5", 1.0:"#d782d9"}})
+      topbar.show()
+    }
+  },
   data() {
     return {
       isComponentLoginModalActive: false,
@@ -119,7 +125,7 @@ export default {
     };
   },
   head: {
-    script: [{ src: "http://localhost:3000/navbar.js" }]
+    script: [{ src: "http://localhost:3000/navbar.js" }, { src: "http://localhost:3000/topbar.js" }]
   }
 };
 </script>

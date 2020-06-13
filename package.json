@@ -13,11 +13,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "nuxt-buefy": "^0.3.31",
-    "axios": "^0.19.2",
     "node-sass": "^4.14.1",
     "nuxt": "^2.0.0",
-    "sass-loader": "^8.0.2",
-    "topbar": "^0.1.4"
+    "sass-loader": "^8.0.2"
   },
   "devDependencies": {}
 }
