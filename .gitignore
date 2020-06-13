@@ -25,6 +25,3 @@ yarn-error.log*
 .nuxt
 .idea
 .vscode
-
-yarn.lock
-package_lock.json
