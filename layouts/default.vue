@@ -5,13 +5,15 @@
         <div class="hero-body" style="padding: 0px !important;">
           <div class="container">
             <div class="columns">
-              <div class="column title-column" style="">
-                <h1 class="title" style="text-align: center">
-                  The Awooing Place
-                </h1>
+              <div class="column title-column" style>
+                <h1 class="title" style="text-align: center">The Awooing Place</h1>
               </div>
               <div class="column">
-                <img src="https://awooing.moe/static/img/Awoos.png" alt="Momiji & Senko" style="margin-bottom: -6.5px;">
+                <img
+                  src="https://awooing.moe/static/img/Awoos.png"
+                  alt="Momiji & Senko"
+                  style="margin-bottom: -6.5px;"
+                />
               </div>
             </div>
           </div>
@@ -20,7 +22,13 @@
       <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
         <div class="container">
           <div class="navbar-brand">
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="main-nav">
+            <a
+              role="button"
+              class="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="main-nav"
+            >
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
@@ -29,28 +37,22 @@
 
           <div id="main-nav" class="navbar-menu">
             <div class="navbar-start">
-              <a class="navbar-item" href="/">
-                Home
-              </a>
-              <a class="navbar-item" href="/news">
-                News
-              </a>
-              <a class="navbar-item" href="/council">
-                Council
-              </a>
-              <a class="navbar-item" href="/awoo">
-                Random Awoos
-              </a>
+              <a class="navbar-item" href="/">Home</a>
+              <a class="navbar-item" href="/news">News</a>
+              <a class="navbar-item" href="/council">Council</a>
+              <a class="navbar-item" href="/awoo">Random Awoos</a>
             </div>
             <div class="navbar-end">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-primary rounded-button">
-                    Register
-                  </a>
-                  <a class="button is-primary rounded-button">
-                    Log in
-                  </a>
+                  <a
+                    class="button is-primary rounded-button"
+                    @click="isComponentRegisterModalActive = true"
+                  >Register</a>
+                  <a
+                    class="button is-primary rounded-button"
+                    @click="isComponentLoginModalActive = true"
+                  >Log in</a>
                 </div>
               </div>
             </div>
@@ -65,24 +67,59 @@
     </div>
     <div class="awooter">
       <div class="awooter-inner container">
-        <p>2020 &copy; <a href="https://github.com/Awooing">Project Awooing</a> &bullet; All rights reserved.</p>
+        <p>
+          2020 &copy;
+          <a href="https://github.com/Awooing">Project Awooing</a> &bullet; All rights reserved.
+        </p>
       </div>
     </div>
+
+    <b-modal
+      :active.sync="isComponentLoginModalActive"
+      has-modal-card
+      trap-focus
+      :destroy-on-hide="false"
+      aria-role="dialog"
+      aria-modal
+    >
+      <login-form v-bind="formProps"></login-form>
+    </b-modal>
+    <b-modal
+      :active.sync="isComponentRegisterModalActive"
+      has-modal-card
+      trap-focus
+      :destroy-on-hide="false"
+      aria-role="dialog"
+      aria-modal
+    >
+      <register-form v-bind="formProps"></register-form>
+    </b-modal>
   </div>
 </template>
 
 <script>
-  import '@nuxtjs/bulma'
-  import '../assets/main.scss'
+import LoginForm from "@/components/LoginForm";
+import RegisterForm from "@/components/RegisterForm";
+import "nuxt-buefy";
+import "../assets/main.scss";
 
-  export default {
-    loading: {
-
-    },
-    head: {
-      script: [
-        { src: 'http://localhost:3000/navbar.js' }
-      ]
-    }
+export default {
+  components: {
+    LoginForm,
+    RegisterForm
+  },
+  data() {
+    return {
+      isComponentLoginModalActive: false,
+      isComponentRegisterModalActive: false,
+      formProps: {
+        email: "",
+        password: ""
+      }
+    };
+  },
+  head: {
+    script: [{ src: "http://localhost:3000/navbar.js" }]
   }
+};
 </script>
