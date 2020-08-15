@@ -1,0 +1,79 @@
+// Wrapper
+
+.awoo-wrapper {
+  text-align-last: center;
+  & > p {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  & > img {
+    cursor: pointer;
+    max-height: 500px;
+  }
+}
+
+.main-body {
+  min-height: calc(100vh - 2rem);
+  background: #47494e;
+  .container > .inner-body {
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+// Navigation
+
+.pages-navigation {
+  text-align: center;
+  margin-top: 2rem;
+  & > p {
+    color: white;
+  }
+  & > div {
+    margin-top: 10px;
+  }
+}
+
+// Loading
+
+.loading-text {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+
+// Awoo Emoji
+
+.awoo {
+  height: 25px;
+  margin-bottom: -2px;
+}
+
+// Utils
+
+.mb-4r {
+  margin-bottom: 4rem;
+}
+
+// Manual Color Overrides
+
+.is-primary {
+  background-color: #8f53ee !important;
+}
+.navbar-link:not(.is-arrowless)::after {
+  border-color: #8f53ee !important;
+}
+.navbar-item:hover,
+.navbar-link:hover {
+  color: #8f53ee !important;
+}
+
+// Other
+
+.page-sub {
+  font-size: 2.4rem;
+  color: white !important;
+  text-align: center;
+  margin-bottom: 2rem;
+}

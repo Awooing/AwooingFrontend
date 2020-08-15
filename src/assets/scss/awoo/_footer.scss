@@ -1,0 +1,15 @@
+.awooter {
+    background-color: #363636;
+    color: #fff;
+    text-align: center;
+    a {
+      color: #8f53ee;
+      &:hover {
+        color: #b287ef;
+      }
+    }
+    .awooter-inner {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
