@@ -3,21 +3,6 @@ body.theme-light {
     background: #cfcdcd;
     color: #363636;
   }
-  .navbar {
-    background: #cfcdcd;
-    color: #363636;
-  }
-  .navbar-item {
-    color: #363636 !important;
-    &:hover {
-      background: #c2c2c2 !important;
-    }
-    &:focus,
-    &.is-active,
-    &.nuxt-link-active {
-        background: #959595 !important;
-    }
-  }
   .main-body {
     background: #e2dfdf !important;
     color: #363636;

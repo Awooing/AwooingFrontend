@@ -1,9 +1,7 @@
 .awooter {
-    background-color: #363636;
-    color: #fff;
     text-align: center;
     a {
-      color: #8f53ee;
+      color: $primary;
       &:hover {
         color: #b287ef;
       }

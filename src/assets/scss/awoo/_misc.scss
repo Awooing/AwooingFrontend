@@ -59,14 +59,14 @@
 // Manual Color Overrides
 
 .is-primary {
-  background-color: #8f53ee !important;
+  background-color: $primary !important;
 }
 .navbar-link:not(.is-arrowless)::after {
-  border-color: #8f53ee !important;
+  border-color: $primary !important;
 }
 .navbar-item:hover,
 .navbar-link:hover {
-  color: #8f53ee !important;
+  color: $primary !important;
 }
 
 // Other
