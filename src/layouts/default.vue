@@ -9,15 +9,7 @@
         </div>
       </div>
     </div>
-    <div class="awooter">
-      <div class="awooter-inner container">
-        <p>
-          2020 &copy;
-          <a href="https://github.com/Awooing">Project Awooing</a> &bullet; All
-          rights reserved.
-        </p>
-      </div>
-    </div>
+    <Footer />
   </div>
 </template>
 
@@ -27,12 +19,14 @@ import "@/assets/scss/main.scss";
 
 import Navbar from "@/components/layout/Navbar.vue";
 import Hero from "@/components/layout/Hero.vue";
+import Footer from '@/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: "DefaultLayout",
   components: {
     Navbar,
     Hero,
+    Footer
   },
 });
 </script>
