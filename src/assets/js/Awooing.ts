@@ -29,7 +29,7 @@ class Navbar {
 }
 
 class Themer {
-	static getTheme() {
+	static getTheme(): 'light' | 'dark' {
 		const theme = localStorage.getItem("AwooThemeStore")
 		return theme ? JSON.parse(theme).theme : "light"
 	}
@@ -61,7 +61,11 @@ class Themer {
 
 	static setAutoTheme() {
 		Themer.setTheme(Themer.getTheme())
-	}
+    }
+
+    static toggleTheme() {
+        Themer.setTheme(Themer.getTheme() === 'dark' ? 'light' : 'dark')
+    }
 }
 
 export class Awooing {
