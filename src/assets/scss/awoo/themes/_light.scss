@@ -1,25 +1,25 @@
 body.theme-light {
-  .awooter {
-    background: #cfcdcd;
-    color: #363636;
-  }
-  .main-body {
-    background: #e2dfdf !important;
-    color: #363636;
-  }
-  .title-block {
-    background: #cacaca;
-    color: #363636;
-  }
-  .news-block {
-    background: #cacaca;
-    color: #363636;
+	.awooter {
+		background: #cfcdcd;
+		color: #363636;
+	}
+	.main-body {
+		background: #e2dfdf !important;
+		color: #363636;
+	}
+	.title-block {
+		background: #cacaca;
+		color: #363636;
+	}
+	.news-block {
+		background: #cacaca;
+		color: #363636;
 
-    &:hover {
-      color: #cacaca;
-    }
-  }
-  .page-sub {
-    color: #363636 !important;
-  }
+		&:hover {
+			color: #cacaca;
+		}
+	}
+	.page-sub {
+		color: #363636 !important;
+	}
 }

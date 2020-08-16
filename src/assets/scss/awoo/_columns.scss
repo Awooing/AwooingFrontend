@@ -1,19 +1,19 @@
 .columns {
-    .column {
-      &.title-column {
-        padding: 5rem 1.25rem;
-        display: flex;
-        align-self: center;
-        @media (min-width: 320px) {
-          & {
-            justify-content: center;
-          }
-        }
-        @media (min-width: 900px) {
-          & {
-            justify-content: normal !important;
-          }
-        }
-      }
-    }
-  }
+	.column {
+		&.title-column {
+			padding: 5rem 1.25rem;
+			display: flex;
+			align-self: center;
+			@media (min-width: 320px) {
+				& {
+					justify-content: center;
+				}
+			}
+			@media (min-width: 900px) {
+				& {
+					justify-content: normal !important;
+				}
+			}
+		}
+	}
+}
