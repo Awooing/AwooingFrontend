@@ -23,11 +23,10 @@
 
 <script lang="ts">
 import Vue from "vue"
+import { mapState } from "vuex"
 export default Vue.extend({
-  data() {
-    return {
-      title: "The Awooing Place", // later replace by mapState from Vuex
-    }
-  },
+  computed: mapState({
+    title: (state: any) => state.title,
+  }),
 })
 </script>
