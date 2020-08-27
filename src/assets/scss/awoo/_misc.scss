@@ -1,78 +1,78 @@
 // Wrapper
 
 .awoo-wrapper {
-	text-align-last: center;
-	& > p {
-		color: white;
-		text-align: center;
-		margin-bottom: 30px;
-	}
-	& > img {
-		cursor: pointer;
-		max-height: 500px;
-	}
+  text-align-last: center;
+  & > p {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  & > img {
+    cursor: pointer;
+    max-height: 500px;
+  }
 }
 
 .main-body {
-	min-height: calc(100vh - 2rem);
-	.container > .inner-body {
-		margin-top: 4rem;
-		padding-bottom: 4rem;
-	}
+  min-height: calc(100vh - 2rem);
+  .container > .inner-body {
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
 
 // Navigation
 
 .pages-navigation {
-	text-align: center;
-	margin-top: 2rem;
-	& > p {
-		color: white;
-	}
-	& > div {
-		margin-top: 10px;
-	}
+  text-align: center;
+  margin-top: 2rem;
+  & > p {
+    color: white;
+  }
+  & > div {
+    margin-top: 10px;
+  }
 }
 
 // Loading
 
 .loading-text {
-	color: white;
-	font-size: 2rem;
-	text-align: center;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
 }
 
 // Awoo Emoji
 
 .awoo {
-	height: 25px;
-	margin-bottom: -2px;
+  height: 25px;
+  margin-bottom: -2px;
 }
 
 // Utils
 
 .mb-4r {
-	margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 // Manual Color Overrides
 
 .is-primary {
-	background-color: $primary !important;
+  background-color: $primary !important;
 }
 .navbar-link:not(.is-arrowless)::after {
-	border-color: $primary !important;
+  border-color: $primary !important;
 }
 .navbar-item:hover,
 .navbar-link:hover {
-	color: $primary !important;
+  color: $primary !important;
 }
 
 // Other
 
 .page-sub {
-	font-size: 2.4rem;
-	color: white !important;
-	text-align: center;
-	margin-bottom: 2rem;
+  font-size: 2.4rem;
+  color: white !important;
+  text-align: center;
+  margin-bottom: 2rem;
 }

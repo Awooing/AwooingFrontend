@@ -1,12 +1,12 @@
 import { Awooing } from "./assets/js/Awooing"
 
 declare module "*.vue" {
-	import Vue from "vue"
-	export default Vue
+  import Vue from "vue"
+  export default Vue
 }
 
 declare module "vue/types/vue" {
-	interface Vue {
-		$awoo: Awooing
-	}
+  interface Vue {
+    $awoo: Awooing
+  }
 }

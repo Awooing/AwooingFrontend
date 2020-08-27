@@ -1,98 +1,98 @@
 .modal-card {
-	min-height: 500px;
-	min-width: 540px;
-	margin: 1rem;
-	border-radius: 0.42rem;
+  min-height: 500px;
+  min-width: 540px;
+  margin: 1rem;
+  border-radius: 0.42rem;
 
-	header.modal-card-head {
-		padding: 2rem;
-	}
+  header.modal-card-head {
+    padding: 2rem;
+  }
 
-	footer.modal-card-foot {
-		text-align: right;
+  footer.modal-card-foot {
+    text-align: right;
 
-		.button {
-			border-radius: 0.42rem;
-		}
+    .button {
+      border-radius: 0.42rem;
+    }
 
-		.columns {
-			width: 100%;
-			margin-left: auto;
-			margin-right: auto;
+    .columns {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
 
-			.column {
-				margin-top: auto;
-				margin-bottom: auto;
-			}
+      .column {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
 
-			:nth-child(1) {
-				text-align: left;
-			}
+      :nth-child(1) {
+        text-align: left;
+      }
 
-			:nth-child(2) {
-				text-align: right;
-			}
-		}
-	}
+      :nth-child(2) {
+        text-align: right;
+      }
+    }
+  }
 
-	header.modal-card-head,
-	footer.modal-card-foot {
-		border: none;
-		font-weight: 400;
+  header.modal-card-head,
+  footer.modal-card-foot {
+    border: none;
+    font-weight: 400;
 
-		& > p {
-			font-size: 1.8rem;
-		}
-	}
+    & > p {
+      font-size: 1.8rem;
+    }
+  }
 
-	input.input {
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
-		padding-top: 1.25rem;
-		padding-bottom: 1.25rem;
-		box-shadow: none;
-		border: none;
-		height: unset;
+  input.input {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    box-shadow: none;
+    border: none;
+    height: unset;
 
-		background: rgba(0, 0, 0, 0.1);
-		color: #fff;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
 
-		&:hover {
-			background: rgba(0, 0, 0, 0.18);
-		}
-	}
-	@media (prefers-color-scheme: dark) {
-		& {
-			background: #4a4a4a !important;
-			header.modal-card-head,
-			footer.modal-card-foot {
-				background: #525050;
+    &:hover {
+      background: rgba(0, 0, 0, 0.18);
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    & {
+      background: #4a4a4a !important;
+      header.modal-card-head,
+      footer.modal-card-foot {
+        background: #525050;
 
-				& > p {
-					color: #fff !important;
-				}
+        & > p {
+          color: #fff !important;
+        }
 
-				a:not(.button) {
-					color: #d4c4ff;
+        a:not(.button) {
+          color: #d4c4ff;
 
-					&:hover {
-						color: #d4d4d4;
-					}
-				}
-			}
-			section.modal-card-body {
-				color: #d4d4d4 !important;
-				background: #4a4a4a;
+          &:hover {
+            color: #d4d4d4;
+          }
+        }
+      }
+      section.modal-card-body {
+        color: #d4d4d4 !important;
+        background: #4a4a4a;
 
-				label {
-					color: #b3b1b1;
-				}
-			}
-			input.input {
-				&::placeholder {
-					color: #b3b1b1;
-				}
-			}
-		}
-	}
+        label {
+          color: #b3b1b1;
+        }
+      }
+      input.input {
+        &::placeholder {
+          color: #b3b1b1;
+        }
+      }
+    }
+  }
 }

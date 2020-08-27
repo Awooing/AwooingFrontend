@@ -1,13 +1,13 @@
 .awooter {
-	text-align: center;
-	a {
-		color: $primary;
-		&:hover {
-			color: #b287ef;
-		}
-	}
-	.awooter-inner {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
-	}
+  text-align: center;
+  a {
+    color: $primary;
+    &:hover {
+      color: #b287ef;
+    }
+  }
+  .awooter-inner {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
