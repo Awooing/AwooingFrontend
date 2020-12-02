@@ -1,28 +1,38 @@
-import Vue from "vue"
-import VueRouter, { RouteConfig, RouterMode } from "vue-router"
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
 
-Vue.use(VueRouter)
-
-const mode: RouterMode = "history"
-
-const routes: RouteConfig[] = [
+const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    component: () => import("@/layouts/default.vue"),
+    component: () => import("../layouts/default.vue"),
     children: [
       {
         path: "/",
-        name: "Home",
-        component: () => import("@/pages/index.vue"),
+        component: () =>
+          import(/* webpackChunkName: "index" */ "../pages/index.vue")
       },
-    ],
-  },
+      {
+        path: "/news",
+        component: () => import(/* webpackChunkName: "news" */ "../pages/news.vue")
+      },
+      {
+        path: "/council",
+        component: () => import(/* webpackChunkName: "council" */ "../pages/council.vue")
+      },
+      {
+        path: "/awoo",
+        component: () => import(/* webpackChunkName: "awoo" */ "../pages/awoo.vue")
+      },
+      {
+        path: "/user/:id",
+        component: () => import(/* webpackChunkName: "user_view" */ "../pages/user/_id.vue")
+      }
+    ]
+  }
 ]
 
-const router = new VueRouter({
-  mode,
-  routes,
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 })
 
 export default router

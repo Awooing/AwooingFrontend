@@ -1,12 +1,5 @@
-import { Awooing } from "./assets/js/Awooing"
-
-declare module "*.vue" {
-  import Vue from "vue"
-  export default Vue
-}
-
-declare module "vue/types/vue" {
-  interface Vue {
-    $awoo: Awooing
-  }
+declare module '*.vue' {
+  import type { DefineComponent } from 'vue'
+  const component: DefineComponent<{}, {}, any>
+  export default component
 }

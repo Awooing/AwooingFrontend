@@ -1,10 +1,4 @@
-import Vue from "vue"
-import Vuex, { ActionTree, GetterTree, MutationTree } from "vuex"
-
-// 
-// Vuex Store
-// 
-Vue.use(Vuex)
+import { createStore, ActionTree, GetterTree, MutationTree } from "vuex"
 
 // 
 // State
@@ -38,7 +32,7 @@ const mutations: MutationTree<RootState> = {
 // 
 // Actions
 // 
-const actions: ActionTree<RootState, RootState> =  {
+const actions: ActionTree<RootState, RootState> = {
   [RootActions.setTitle]: ({ commit }, value) => commit(RootActions.setTitle, value),
   [RootActions.setCurrentTitle]: ({ commit }) => commit(RootActions.setCurrentTitle),
 }
@@ -47,7 +41,7 @@ const actions: ActionTree<RootState, RootState> =  {
 // Getters
 // 
 const getters: GetterTree<RootState, RootState> = {
-  getTitle: (state) => state.title
+  getTitle: (state) => state.title
 }
 
 // 
@@ -58,11 +52,12 @@ const modules = {}
 // 
 // Root Store
 // 
-const RootStore = new Vuex.Store({
+const RootStore = createStore({
   state,
   mutations,
   actions,
   modules,
+  getters
 })
 
 export default RootStore

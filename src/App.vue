@@ -1,13 +1,12 @@
 <template>
-  <router-view />
+  <div id="vue-app">
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue"
-export default Vue.extend({
-  name: "AwooToTheMoon",
-  created() {
-    this.$store.dispatch("app_setCurrentTitle")
-  },
-})
+import "@/assets/main.scss"
+import { defineComponent } from "vue"
+
+export default defineComponent({})
 </script>
