@@ -14,29 +14,39 @@ export const state = () => ({
 })
 
 // 
+// TypeScript declarations
+// 
+export type RootState = ReturnType<typeof state>
+
+export enum RootActions {
+  setTitle = "app_setTitle",
+  setCurrentTitle = "app_setCurrentTitle"
+}
+
+// 
 // Mutations
 // 
-const mutations: MutationTree<Root.State> = {
-  [Root.Actions.setTitle]: (state, value) => {
+const mutations: MutationTree<RootState> = {
+  [RootActions.setTitle]: (state, value) => {
     document.title = `${value} | Awooing.moe`
     state.title = value
   },
-  [Root.Actions.setCurrentTitle]: state =>
+  [RootActions.setCurrentTitle]: state =>
     (document.title = `${state.title} | Awooing.moe`),
 }
 
 // 
 // Actions
 // 
-const actions: ActionTree<Root.State, Root.State> =  {
-  [Root.Actions.setTitle]: ({ commit }, value) => commit(Root.Actions.setTitle, value),
-  [Root.Actions.setCurrentTitle]: ({ commit }) => commit(Root.Actions.setCurrentTitle),
+const actions: ActionTree<RootState, RootState> =  {
+  [RootActions.setTitle]: ({ commit }, value) => commit(RootActions.setTitle, value),
+  [RootActions.setCurrentTitle]: ({ commit }) => commit(RootActions.setCurrentTitle),
 }
 
 // 
 // Getters
 // 
-const getters: GetterTree<Root.State, Root.State> = {
+const getters: GetterTree<RootState, RootState> = {
   getTitle: (state) => state.title
 }
 
@@ -54,16 +64,5 @@ const RootStore = new Vuex.Store({
   actions,
   modules,
 })
-
-// 
-// TypeScript declarations
-// 
-export namespace Root {
-  export type State = ReturnType<typeof state>
-  export enum Actions {
-    setTitle = "app_setTitle",
-    setCurrentTitle = "app_setCurrentTitle"
-  }
-}
 
 export default RootStore
