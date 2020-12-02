@@ -1,23 +1,69 @@
 import Vue from "vue"
-import Vuex from "vuex"
+import Vuex, { ActionTree, GetterTree, MutationTree } from "vuex"
 
+// 
+// Vuex Store
+// 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-    title: "The Awooing Place",
-  },
-  mutations: {
-    APP_MUT_SET_TITLE: (state, value) => {
-      document.title = `${value} | Awooing.moe`
-      state.title = value
-    },
-    APP_MUT_SET_CURRENT: state =>
-      (document.title = `${state.title} | Awooing.moe`),
-  },
-  actions: {
-    app_setTitle: ({ commit }, value) => commit("APP_MUT_SET_TITLE", value),
-    app_setCurrentTitle: ({ commit }) => commit("APP_MUT_SET_CURRENT"),
-  },
-  modules: {},
+// 
+// State
+// 
+export const state = () => ({
+  title: "The Awooing Place",
 })
+
+// 
+// Mutations
+// 
+const mutations: MutationTree<Root.State> = {
+  [Root.Actions.setTitle]: (state, value) => {
+    document.title = `${value} | Awooing.moe`
+    state.title = value
+  },
+  [Root.Actions.setCurrentTitle]: state =>
+    (document.title = `${state.title} | Awooing.moe`),
+}
+
+// 
+// Actions
+// 
+const actions: ActionTree<Root.State, Root.State> =  {
+  [Root.Actions.setTitle]: ({ commit }, value) => commit(Root.Actions.setTitle, value),
+  [Root.Actions.setCurrentTitle]: ({ commit }) => commit(Root.Actions.setCurrentTitle),
+}
+
+// 
+// Getters
+// 
+const getters: GetterTree<Root.State, Root.State> = {
+  getTitle: (state) => state.title
+}
+
+// 
+// Modules
+// 
+const modules = {}
+
+// 
+// Root Store
+// 
+const RootStore = new Vuex.Store({
+  state,
+  mutations,
+  actions,
+  modules,
+})
+
+// 
+// TypeScript declarations
+// 
+export namespace Root {
+  export type State = ReturnType<typeof state>
+  export enum Actions {
+    setTitle = "app_setTitle",
+    setCurrentTitle = "app_setCurrentTitle"
+  }
+}
+
+export default RootStore
