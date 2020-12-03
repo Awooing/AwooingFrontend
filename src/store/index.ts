@@ -4,7 +4,7 @@ import { createStore, ActionTree, GetterTree, MutationTree } from "vuex"
 // State
 // 
 export const state = () => ({
-  title: "The Awooing Place",
+  title: "default",
 })
 
 // 
@@ -17,16 +17,18 @@ export enum RootActions {
   setCurrentTitle = "app_setCurrentTitle"
 }
 
+const defaultTitle = "The Awooing Place"
+
 // 
 // Mutations
 // 
 const mutations: MutationTree<RootState> = {
   [RootActions.setTitle]: (state, value) => {
-    document.title = `${value} | Awooing.moe`
+    document.title = value === defaultTitle ? "Awooing.moe" : `${value} | Awooing.moe`
     state.title = value
   },
   [RootActions.setCurrentTitle]: state =>
-    (document.title = `${state.title} | Awooing.moe`),
+    (document.title = state.title === defaultTitle ? "Awooing.moe" : `${state.title} | Awooing.moe`),
 }
 
 // 

@@ -25,6 +25,7 @@ import { defineComponent } from "vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Card from "@/components/elements/card/CouncilCard.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
+import { onMountedSetTitle } from "@/app/title"
 
 export default defineComponent({
   name: "Council",
@@ -34,6 +35,8 @@ export default defineComponent({
     Paragraph,
   },
   setup() {
+    onMountedSetTitle("Awoo Council")
+
     const council = [
       {
         name: "Tokichii",

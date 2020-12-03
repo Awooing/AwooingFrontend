@@ -28,6 +28,7 @@ import { defineComponent } from "vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Card from "@/components/elements/card/BlogCard.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
+import { onMountedSetTitle } from "@/app/title"
 
 export default defineComponent({
   name: "News",
@@ -37,6 +38,8 @@ export default defineComponent({
     Paragraph,
   },
   setup() {
+    onMountedSetTitle("News")
+
     //   Posts Mock
     const posts = [
       {

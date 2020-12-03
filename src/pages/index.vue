@@ -42,6 +42,7 @@ import Card from "@/components/elements/card/BlogCard.vue"
 import DiscordWidget from "@/components/global/DiscordWidget.vue"
 import Button from "@/components/elements/button/Button.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
+import { onMountedSetTitle } from "@/app/title"
 
 export default defineComponent({
   name: "Index",
@@ -53,6 +54,8 @@ export default defineComponent({
     Paragraph,
   },
   setup() {
+    onMountedSetTitle("The Awooing Place")
+
     // Newest Post Mock
     const post = {
       title: "Interesting Title",

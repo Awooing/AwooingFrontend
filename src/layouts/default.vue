@@ -9,7 +9,7 @@
             class="column is-half justify-center md:justify-start md:items-center"
             style="display: flex !important"
           >
-            <hero-title> {{ title }} </hero-title>
+            <hero-title> {{ state.title }} </hero-title>
           </div>
           <div
             class="column is-half justify-center md:justify-end md:items-center"
@@ -46,7 +46,7 @@
 </style>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue"
+import { computed, defineComponent, reactive } from "vue"
 
 import Footer from "@/components/layout/Footer.vue"
 import Hero from "@/components/elements/hero/Hero.vue"
@@ -62,10 +62,12 @@ export default defineComponent({
     Navbar,
   },
   setup() {
-    const title = computed(() => store.state.title)
+    const state = reactive({
+      title: computed(() => store.state.title),
+    })
 
     return {
-      title,
+      state,
     }
   },
 })

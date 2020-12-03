@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent, reactive } from "vue"
 export default defineComponent({
   props: {
     to: {
@@ -20,12 +20,28 @@ export default defineComponent({
       type: String,
       default: null,
     },
+    color: {
+      type: String,
+      default: "gray-700",
+    },
+    hoverColor: {
+      type: String,
+      default: "gray-600",
+    },
+    px: {
+      type: String,
+      default: "3",
+    },
+    py: {
+      type: String,
+      default: "2",
+    },
   },
-  setup() {
-    return {
-      classes:
-        "cursor-pointer inline-block bg-gray-700 rounded-md px-3 py-2 font-medium text-white hover:bg-gray-600 transition duration-100 ease-in-out",
-    }
+  setup(props) {
+    const state = reactive({
+      classes: `cursor-pointer inline-block bg-${props.color} rounded-md px-${props.px} py-${props.py} font-medium text-white hover:bg-${props.hoverColor} transition duration-100 ease-in-out`,
+    })
+    return state
   },
 })
 </script>

@@ -7,6 +7,11 @@
 <script lang="ts">
 import "@/assets/main.scss"
 import { defineComponent } from "vue"
+import { onMountedSetTitle } from "./app/title"
 
-export default defineComponent({})
+export default defineComponent({
+  setup() {
+    onMountedSetTitle("The Awooing Place")
+  },
+})
 </script>

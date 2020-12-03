@@ -36,6 +36,7 @@ import Button from "@/components/elements/button/Button.vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
 import { defineComponent, onMounted, reactive } from "vue"
+import { setPageTitle } from "@/app/title"
 
 export default defineComponent({
   components: { Paragraph, PageTitle, Button },
@@ -92,14 +93,15 @@ export default defineComponent({
       console.log("Copied", state.imageSrc)
     }
 
-    onMounted(() =>
+    onMounted(() => {
+      setPageTitle("Random Awoo")
       setTimeout(() => {
         // Image load mock
         state.imageLoaded = true
         state.imageSrc =
           "https://cdn.discordapp.com/attachments/765326619387756614/783821203935723550/c6b01bbc3c29d7a15c9a1a6e57ff364f633a047888cb96735dbcfef95621e665.jpg"
       }, 600)
-    )
+    })
 
     return {
       loadImage,

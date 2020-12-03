@@ -19,9 +19,9 @@
           <div class="ml-4 flex items-center md:ml-6">
             <div>
               <span class="mr-3">
-                <Button>Login</Button>
+                <Button @click="toggleLogin">Login</Button>
               </span>
-              <Button>Register</Button>
+              <Button @click="toggleRegister">Register</Button>
             </div>
           </div>
         </div>
@@ -38,35 +38,55 @@
       <div class="pt-4 pb-3 border-t border-gray-700 flex justify-center">
         <div>
           <span class="mr-3">
-            <Button>Login</Button>
+            <Button @click="toggleLogin">Login</Button>
           </span>
-          <Button>Register</Button>
+          <Button @click="toggleRegister">Register</Button>
         </div>
       </div>
     </div>
   </nav>
+
+  <modal :show="state.showLogin" :toggle="toggleLogin">
+    <login-form />
+  </modal>
+
+  <modal :show="state.showRegister" :toggle="toggleRegister">
+    <register-form />
+  </modal>
 </template>
 
 <script lang="ts">
 import Button from "@/components/elements/button/Button.vue"
 import { defineComponent, reactive } from "vue"
 import NavbarItem from "./NavbarItem.vue"
+import Modal from "@/components/elements/modal/Modal.vue"
+
+import LoginForm from "@/components/forms/LoginForm.vue"
+import RegisterForm from "@/components/forms/RegisterForm.vue"
+
 export default defineComponent({
   components: {
+    Modal,
     NavbarItem,
     Button,
+    LoginForm,
+    RegisterForm,
   },
   setup() {
     const state = reactive({
       menuOpen: false,
+      showLogin: false,
+      showRegister: false,
     })
 
-    function toggleMenu() {
-      state.menuOpen = !state.menuOpen
-    }
+    const toggleMenu = () => (state.menuOpen = !state.menuOpen)
+    const toggleLogin = () => (state.showLogin = !state.showLogin)
+    const toggleRegister = () => (state.showRegister = !state.showRegister)
 
     return {
       toggleMenu,
+      toggleLogin,
+      toggleRegister,
       state,
     }
   },

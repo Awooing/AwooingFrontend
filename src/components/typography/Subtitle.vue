@@ -1,5 +1,5 @@
 <template>
-  <h2 :class="`text-2xl title-font font-medium mb-3 text-${color} cursor-text`">
+  <h2 :class="`text-2xl title-font font-medium text-${color} cursor-text`">
     <slot />
   </h2>
 </template>
