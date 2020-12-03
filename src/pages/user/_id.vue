@@ -39,6 +39,7 @@
 </template>
 
 <script lang="ts">
+import { onMountedSetTitle } from "@/app/title"
 import { defineComponent } from "vue"
 
 export default defineComponent({
@@ -60,6 +61,8 @@ export default defineComponent({
         },
       ],
     }
+
+    onMountedSetTitle(user.username)
 
     return {
       user,
