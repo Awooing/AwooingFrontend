@@ -25,7 +25,7 @@
         v-if="state.imageLoaded && state.previousAwoo.length !== 0"
         class="mt-8 text-center"
       >
-        <Button @click="state.setPreviousAwoo">Previous Awoo</Button>
+        <Button @click="setPreviousAwoo">Previous Awoo</Button>
       </div>
     </div>
   </div>
