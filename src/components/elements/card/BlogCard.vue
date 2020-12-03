@@ -27,10 +27,6 @@ import CardTextFooter from "./CardTextFooter.vue"
 export default defineComponent({
   components: { Paragraph, CardTextFooter, Subtitle },
   props: {
-    toggledDots: {
-      type: Boolean,
-      default: false,
-    },
     image: {
       type: Boolean,
       default: null,
