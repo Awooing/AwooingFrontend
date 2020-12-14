@@ -25,7 +25,7 @@ import { defineComponent } from "vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Card from "@/components/elements/card/CouncilCard.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
-import { onMountedSetTitle } from "@/app/title"
+import { onMountedSetTitle } from "@/app/hooks/title"
 
 export default defineComponent({
   name: "Council",

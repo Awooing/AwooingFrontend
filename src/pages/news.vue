@@ -24,11 +24,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent, reactive } from "vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Card from "@/components/elements/card/BlogCard.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
-import { onMountedSetTitle } from "@/app/title"
+import { onMountedSetTitle } from "@/app/hooks/title"
+import fetchArticles from "@/app/hooks/api/articles"
+import ArticleDto from "../../../AwooingBackend/src/dto/db/ArticleDto"
 
 export default defineComponent({
   name: "News",
@@ -38,24 +40,24 @@ export default defineComponent({
     Paragraph,
   },
   setup() {
+    const data = reactive({
+      posts: null as ArticleDto[] | false | null,
+    })
     onMountedSetTitle("News")
 
-    //   Posts Mock
-    const posts = [
-      {
-        title: "Interesting Title",
-        content:
-          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas lorem. Etiam quis quam. Integer tempor. Aenean fermentum risus id tortor. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Etiam quis quam. Maecenas aliquet accumsan leo. Sed convallis magna eu sem. Fusce consectetuer risus a nunc. Phasellus et lorem id felis nonummy placerat. Nulla quis diam. Suspendisse nisl. ",
-        createdAt: new Date(),
-        author: {
-          username: "sdsdf",
-          slug: "sdsdf",
-        },
-      },
-    ]
+    const fetchData = async () => {
+      const res = await fetchArticles({
+        perPage: 2,
+        currentPage: 1,
+      })
+
+      data.posts = res ? res.posts : res
+    }
+
+    fetchData()
 
     return {
-      posts,
+      data,
       truncate: (text: string) => text.substring(0, 120),
     }
   },

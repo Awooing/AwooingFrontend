@@ -9,19 +9,37 @@
     <div class="columns is-variable is-6">
       <div class="column is-two-thirds">
         <div class="w-full md:mb-0 mb-6">
-          <card
-            v-if="post"
-            :infoFooter="true"
-            :title="post.title"
-            :author="post.author.username"
-            :date="post.date"
-          >
-            {{ truncate(post.content) }}...
-          </card>
-        </div>
+          <awooing-stops-card v-if="art.posts === false" background="red-800">
+            <p class="text-2xl text-gray-300">Posts could not be loaded.</p>
+          </awooing-stops-card>
 
-        <div class="mt-12 text-right">
-          <Button to="/news"> More news </Button>
+          <div v-else-if="art.posts === null" class="flex justify-center mt-4">
+            <Loader />
+          </div>
+
+          <awooing-stops-card
+            v-else-if="art.posts.length === 0"
+            background="gray-700"
+          >
+            <p class="text-2xl text-gray-300">There are no available posts.</p>
+          </awooing-stops-card>
+
+          <div v-else>
+            <div class="mb-3" v-for="(post, i) in art.posts" :key="i">
+              <card
+                v-if="post"
+                :infoFooter="true"
+                :title="post.title"
+                :author="post.author.username"
+                :date="post.date"
+              >
+                {{ truncate(post.content) }}...
+              </card>
+            </div>
+            <div class="mt-12 text-right">
+              <Button to="/news"> More news </Button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -36,13 +54,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent, reactive } from "vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Card from "@/components/elements/card/BlogCard.vue"
+import AwooingStopsCard from "@/components/elements/card/AwooingStopsCard.vue"
 import DiscordWidget from "@/components/global/DiscordWidget.vue"
 import Button from "@/components/elements/button/Button.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
-import { onMountedSetTitle } from "@/app/title"
+import { onMountedSetTitle } from "@/app/hooks/title"
+import ArticleDto from "../../../AwooingBackend/src/dto/db/ArticleDto"
+import Loader from "@/components/global/Loader.vue"
+import { hookArticles } from "@/app/hooks/api/articles"
 
 export default defineComponent({
   name: "Index",
@@ -52,24 +74,21 @@ export default defineComponent({
     DiscordWidget,
     Button,
     Paragraph,
+    Loader,
+    AwooingStopsCard,
   },
   setup() {
+    const data = reactive({
+      posts: null as ArticleDto[] | false | null,
+    })
+
     onMountedSetTitle("The Awooing Place")
 
-    // Newest Post Mock
-    const post = {
-      title: "Interesting Title",
-      content:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas lorem. Etiam quis quam. Integer tempor. Aenean fermentum risus id tortor. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Etiam quis quam. Maecenas aliquet accumsan leo. Sed convallis magna eu sem. Fusce consectetuer risus a nunc. Phasellus et lorem id felis nonummy placerat. Nulla quis diam. Suspendisse nisl. ",
-      createdAt: new Date(),
-      author: {
-        username: "sdsdf",
-        slug: "sdsdf",
-      },
-    }
+    const art = hookArticles()
 
     return {
-      post,
+      data,
+      art,
       truncate: (text: string) => text.substring(0, 120),
     }
   },

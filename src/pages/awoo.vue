@@ -36,7 +36,7 @@ import Button from "@/components/elements/button/Button.vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
 import { defineComponent, onMounted, reactive } from "vue"
-import { setPageTitle } from "@/app/title"
+import { setPageTitle } from "@/app/hooks/title"
 
 export default defineComponent({
   components: { Paragraph, PageTitle, Button },

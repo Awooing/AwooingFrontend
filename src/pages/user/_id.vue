@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { onMountedSetTitle } from "@/app/title"
+import { onMountedSetTitle } from "@/app/hooks/title"
 import { defineComponent } from "vue"
 
 export default defineComponent({

@@ -1,15 +1,16 @@
 import { createStore, ActionTree, GetterTree, MutationTree } from "vuex"
 
-// 
-// State
-// 
+/**
+ * Default RootState
+ */
 export const state = () => ({
-  title: "default",
+  title: "default"
 })
 
-// 
-// TypeScript declarations
-// 
+/**
+ * TypeScript declarations
+ */
+
 export type RootState = ReturnType<typeof state>
 
 export enum RootActions {
@@ -19,41 +20,47 @@ export enum RootActions {
 
 const defaultTitle = "The Awooing Place"
 
-// 
-// Mutations
-// 
+/**
+ * Mutations
+ */
 const mutations: MutationTree<RootState> = {
   [RootActions.setTitle]: (state, value) => {
-    document.title = value === defaultTitle ? "Awooing.moe" : `${value} | Awooing.moe`
+    document.title =
+      value === defaultTitle ? "Awooing.moe" : `${value} | Awooing.moe`
     state.title = value
   },
   [RootActions.setCurrentTitle]: state =>
-    (document.title = state.title === defaultTitle ? "Awooing.moe" : `${state.title} | Awooing.moe`),
+    (document.title =
+      state.title === defaultTitle
+        ? "Awooing.moe"
+        : `${state.title} | Awooing.moe`)
 }
 
-// 
-// Actions
-// 
+/**
+ * Actions
+ */
 const actions: ActionTree<RootState, RootState> = {
-  [RootActions.setTitle]: ({ commit }, value) => commit(RootActions.setTitle, value),
-  [RootActions.setCurrentTitle]: ({ commit }) => commit(RootActions.setCurrentTitle),
+  [RootActions.setTitle]: ({ commit }, value) =>
+    commit(RootActions.setTitle, value),
+  [RootActions.setCurrentTitle]: ({ commit }) =>
+    commit(RootActions.setCurrentTitle)
 }
 
-// 
-// Getters
-// 
+/**
+ * Getters
+ */
 const getters: GetterTree<RootState, RootState> = {
-  getTitle: (state) => state.title
+  getTitle: state => state.title
 }
 
-// 
-// Modules
-// 
+/**
+ * Modules
+ */
 const modules = {}
 
-// 
-// Root Store
-// 
+/**
+ * Vuex RootStore
+ */
 const RootStore = createStore({
   state,
   mutations,
