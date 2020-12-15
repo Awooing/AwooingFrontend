@@ -7,22 +7,26 @@
 
   <div class="mt-20 flex justify-center">
     <div class="block">
-      <div v-if="!state.imageLoaded">
-        <p class="text-purple-400 font-medium text-3xl">Loading...</p>
+      <div v-if="awoo.image === null">
+        <p class="text-purple-400 font-medium text-3xl"><loader /></p>
       </div>
-      <div v-if="state.imageSrc">
+      <div v-else-if="awoo.image === false" class="w-full h-full">
+        <awooing-stops-card background="red-800">
+          The image could not be loaded.
+        </awooing-stops-card>
+      </div>
+      <div v-else>
         <img
           @click.exact="loadImage"
           @click.shift="copyImageLink"
-          @load="setImageLoaded"
-          :src="state.imageSrc"
+          :src="makeCdnUrl(awoo.image.path)"
           alt="uwu"
           class="cursor-pointer"
         />
       </div>
 
       <div
-        v-if="state.imageLoaded && state.previousAwoo.length !== 0"
+        v-if="awoo.image && state.previousAwoo.length !== 0"
         class="mt-8 text-center"
       >
         <Button @click="setPreviousAwoo">Previous Awoo</Button>
@@ -36,79 +40,56 @@ import Button from "@/components/elements/button/Button.vue"
 import PageTitle from "@/components/typography/PageTitle.vue"
 import Paragraph from "@/components/typography/Paragraph.vue"
 import { defineComponent, onMounted, reactive } from "vue"
-import { setPageTitle } from "@/app/hooks/title"
+import { onMountedSetTitle, setPageTitle } from "@/app/hooks/title"
+import { CdnFile } from "../../../AwooingBackend/src/fetchers/cdn.fetcher"
+import { hookRandomImage } from "@/app/hooks/api/awoo"
+import Loader from "@/components/global/Loader.vue"
+import AwooingStopsCard from "@/components/elements/card/AwooingStopsCard.vue"
 
 export default defineComponent({
-  components: { Paragraph, PageTitle, Button },
+  components: { Paragraph, PageTitle, Button, Loader, AwooingStopsCard },
   setup() {
     const state = reactive({
-      imageLoaded: false,
-      imageSrc: null as string | null,
-      previousAwoo: [] as string[],
+      previousAwoo: [] as CdnFile[],
     })
-    async function loadImage() {
-      if (state.imageSrc) state.previousAwoo.push(state.imageSrc)
 
-      state.imageSrc = null
-      state.imageLoaded = false
-      //   if (state.imageSrc !== null ) TODO: show topbar
+    const awoo = hookRandomImage()
 
-      //   const image = await axios({
-      //     method: "GET",
-      //     url: "http://localhost:4000/awoo",
-      //   })
+    const makeCdnUrl = (path: string) =>
+      path.startsWith("http") ? path : `https://cdn.awooing.moe/${path}`
 
-      // Axios response mock
-      const {
-        data: { path },
-      } = {
-        data: {
-          path:
-            "https://cdn.discordapp.com/attachments/765326619387756614/783821203935723550/c6b01bbc3c29d7a15c9a1a6e57ff364f633a047888cb96735dbcfef95621e665.jpg?v=" +
-            Math.random(),
-        },
-      }
-
-      setTimeout(() => {
-        state.imageSrc = path.startsWith(`http`)
-          ? path
-          : `https://cdn.awooing.moe/${path}`
-      }, 400)
+    const loadImage = async () => {
+      if (awoo.data.image) state.previousAwoo.push(awoo.data.image)
+      awoo.data.image = null
+      await awoo.refetch()
     }
-    function setImageLoaded() {
-      state.imageLoaded = true
-      //   hide topbar
-    }
-    function setPreviousAwoo() {
+
+    const setPreviousAwoo = () => {
       if (!(state.previousAwoo.length <= 0)) {
-        const awoo = state.previousAwoo[state.previousAwoo.length - 1]
-        state.previousAwoo = state.previousAwoo.filter(url => url !== awoo)
+        const previous = state.previousAwoo[state.previousAwoo.length - 1]
+        state.previousAwoo = state.previousAwoo.filter(
+          img => img.path !== previous.path
+        )
+        awoo.data.image = previous
       }
     }
 
-    async function copyImageLink() {
-      if (!state.imageSrc) return
-      await navigator.clipboard.writeText(state.imageSrc)
-
-      console.log("Copied", state.imageSrc)
+    const copyImageLink = () => {
+      if (!awoo.data.image) return
+      return navigator.clipboard.writeText(makeCdnUrl(awoo.data.image.path))
     }
 
-    onMounted(() => {
-      setPageTitle("Random Awoo")
-      setTimeout(() => {
-        // Image load mock
-        state.imageLoaded = true
-        state.imageSrc =
-          "https://cdn.discordapp.com/attachments/765326619387756614/783821203935723550/c6b01bbc3c29d7a15c9a1a6e57ff364f633a047888cb96735dbcfef95621e665.jpg"
-      }, 600)
-    })
+    onMountedSetTitle("Random Awoo")
+
+    console.log(awoo)
 
     return {
       loadImage,
-      setImageLoaded,
       setPreviousAwoo,
       copyImageLink,
+      makeCdnUrl,
       state,
+      awoo: awoo.data,
     }
   },
 })

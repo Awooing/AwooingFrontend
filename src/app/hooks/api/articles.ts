@@ -1,4 +1,5 @@
-import axios from "@/app/axios"
+import { req } from "@/app/axios"
+import { awooBar } from "@/app/topbar"
 import { reactive } from "vue"
 import ArticleDto from "../../../../../AwooingBackend/src/dto/db/ArticleDto"
 
@@ -12,7 +13,7 @@ export interface FetchArticleParams {
   currentPage: number
 }
 
-export interface ArticleListRawResponse {
+export interface ArticleListResponse {
   posts: ArticleDto[]
   pageInfo: PageInfo
 }
@@ -22,7 +23,7 @@ export const fetchArticles = async ({
   currentPage = 1
 }: FetchArticleParams) => {
   try {
-    const { data: res } = await axios.request<ArticleListRawResponse>({
+    const { data: res } = await req<ArticleListResponse>({
       method: "GET",
       url: "/article/list",
       params: {
@@ -40,15 +41,17 @@ export const fetchArticles = async ({
 
 export const hookArticles = () => {
   const data = reactive({
-    posts: null as ArticleListRawResponse["posts"] | false | null,
-    pageInfo: null as ArticleListRawResponse["pageInfo"] | null
+    posts: null as ArticleListResponse["posts"] | false | null,
+    pageInfo: null as ArticleListResponse["pageInfo"] | null
   })
 
   const fetchData = async () => {
-    const res = await fetchArticles({
-      perPage: 2,
-      currentPage: 1
-    })
+    const res = await awooBar.promised(
+      fetchArticles({
+        perPage: 2,
+        currentPage: 1
+      })
+    )
 
     if (!res) {
       data.posts = false
@@ -57,8 +60,8 @@ export const hookArticles = () => {
       return
     }
 
-    data.posts = res.posts
-    data.pageInfo = res.pageInfo
+    data.posts = res.data.posts
+    data.pageInfo = res.data.pageInfo
   }
 
   fetchData()

@@ -51,7 +51,7 @@ export default defineComponent({
         currentPage: 1,
       })
 
-      data.posts = res ? res.posts : res
+      data.posts = res ? res.data.posts : res
     }
 
     fetchData()
