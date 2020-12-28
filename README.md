@@ -1,3 +1,7 @@
+# Deprecated repository
+This repository has been moved to the monorepo [Awooing/Awooing](https://github.com/Awooing/Awooing)
+
+
 # awooingfrontend2
 
 ## Project setup
